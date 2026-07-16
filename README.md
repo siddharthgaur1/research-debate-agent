@@ -1,5 +1,7 @@
 # Research + Debate Agent
 
+[![CI](https://github.com/siddharthgaur1/research-debate-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/siddharthgaur1/research-debate-agent/actions/workflows/ci.yml) [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 Ask a contestable research question. Instead of one model summarising whatever it
 found first, a team of agents researches it in parallel, **argues both sides**, audits
 its own sources for bias, and arbitrates the result into a report where every claim

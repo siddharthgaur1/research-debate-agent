@@ -11,7 +11,7 @@ from __future__ import annotations
 import operator
 from datetime import datetime, timezone
 from enum import Enum
-from typing import Annotated, Any, Literal, TypedDict
+from typing import Annotated, Literal, TypedDict
 
 from pydantic import BaseModel, Field
 
