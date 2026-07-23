@@ -30,3 +30,8 @@ htmlcov/
 .idea/
 .DS_Store
 Thumbs.db
+.serena/
+.ruff_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+.DS_Store
