@@ -1,6 +1,36 @@
 # Research + Debate Agent
 
-[![CI](https://github.com/siddharthgaur1/research-debate-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/siddharthgaur1/research-debate-agent/actions/workflows/ci.yml) [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+**A team of LLM agents researches a contestable question, argues both sides, audits its own sources for bias, and arbitrates — every claim cited and confidence-scored.**
+
+[![CI](https://github.com/siddharthgaur1/research-debate-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/siddharthgaur1/research-debate-agent/actions/workflows/ci.yml) [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) [![Runs on free tiers](https://img.shields.io/badge/runs%20on-free%20Groq%20%2B%20Tavily-brightgreen)](#run-on-free-tiers)
+
+> **Live demo:** not a zero-key click-through — the agents need a model and live
+> web search, so there is no keyless public demo. It runs on **free tiers** (Groq
+> for the LLM, Tavily's free search) with no credit card — see below.
+
+## Run on free tiers
+
+```bash
+git clone https://github.com/siddharthgaur1/research-debate-agent
+cd research-debate-agent
+cp .env.example .env
+# in .env, all free:
+OPENAI_API_KEY=gsk_...                          # https://console.groq.com/keys
+OPENAI_BASE_URL=https://api.groq.com/openai/v1
+REASONING_MODEL=llama-3.3-70b-versatile
+CHEAP_MODEL=llama-3.1-8b-instant
+TAVILY_API_KEY=tvly-...                         # https://app.tavily.com (free tier)
+
+docker compose up --build     # dashboard :8501 · API :8000
+```
+
+The chat model runs on any OpenAI-compatible endpoint (Groq/Ollama) via
+`OPENAI_BASE_URL`. Redis is optional (in-memory fallback). Source-dedup embeddings
+are the one piece that still calls OpenAI — it is a quality feature, and a debate
+runs without it. Security model, including the web-content prompt-injection and
+SSRF threat surface: [SECURITY.md](SECURITY.md).
+
+---
 
 Ask a contestable research question. Instead of one model summarising whatever it
 found first, a team of agents researches it in parallel, **argues both sides**, audits
