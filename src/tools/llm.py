@@ -42,12 +42,14 @@ class SearchCapExceeded(RuntimeError):
 
 def _model(name: str, temperature: float) -> ChatOpenAI:
     settings = get_settings()
+    extra = {"base_url": settings.openai_base_url} if settings.openai_base_url else {}
     return ChatOpenAI(
         model=name,
         temperature=temperature,
         api_key=settings.openai_api_key,
         timeout=90,
         max_retries=2,
+        **extra,
     )
 
 

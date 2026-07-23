@@ -22,9 +22,15 @@ class Settings(BaseSettings):
         env_file=".env", env_file_encoding="utf-8", extra="ignore"
     )
 
-    openai_api_key: str = Field(..., description="OpenAI API key.")
-    redis_url: str = Field(..., description="Redis URL for streaming and checkpoints.")
-    db_path: Path = Field(..., description="SQLite file holding run history.")
+    openai_api_key: str = Field(..., description="LLM API key (OpenAI or compatible).")
+    # Any OpenAI-compatible endpoint. Empty = OpenAI; set it to run chat on a free
+    # tier (Groq: https://api.groq.com/openai/v1, then reasoning_model=
+    # llama-3.3-70b-versatile) or a local Ollama (http://localhost:11434/v1).
+    openai_base_url: str = Field(default="", description="OpenAI-compatible base URL; empty = OpenAI.")
+    # Optional: the runner degrades to an in-memory checkpointer if Redis is
+    # unreachable, so a single API key is enough to run.
+    redis_url: str = Field(default="redis://localhost:6379/0", description="Redis URL for streaming and checkpoints.")
+    db_path: Path = Field(default=Path("data/runs.db"), description="SQLite file holding run history.")
     runs_dir: Path = Field(
         default=Path("runs"), description="Root for per-run artifacts (PDFs)."
     )
