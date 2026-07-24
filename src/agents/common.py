@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import re
-from typing import Iterable
+from collections.abc import Iterable
 
 from ..persistence import stream
 from ..state.schema import AgentMessage, DebateTurn, RunState, Source, Stance

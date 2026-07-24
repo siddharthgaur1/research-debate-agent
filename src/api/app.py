@@ -13,9 +13,9 @@ from __future__ import annotations
 
 import json
 import threading
+from collections.abc import Iterator
 from functools import lru_cache
 from pathlib import Path
-from typing import Iterator
 
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse, StreamingResponse

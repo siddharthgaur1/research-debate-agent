@@ -19,7 +19,7 @@ from ..config import get_settings
 _TIMEOUT = 20
 _UA = "Mozilla/5.0 (compatible; research-debate-agent/1.0)"
 
-_TAG_RE = re.compile(r"<(script|style)[^>]*>.*?</\1>", re.S | re.I)
+_TAG_RE = re.compile(r"<(script|style)[^>]*>.*?</\1>", re.DOTALL | re.IGNORECASE)
 _ANY_TAG_RE = re.compile(r"<[^>]+>")
 _WS_RE = re.compile(r"\n{3,}")
 
@@ -27,7 +27,7 @@ _WS_RE = re.compile(r"\n{3,}")
 def domain_of(url: str) -> str:
     """Registrable-ish host for a url, lowercased, without `www.`."""
     host = (urlparse(url).hostname or "").lower()
-    return host[4:] if host.startswith("www.") else host
+    return host.removeprefix("www.")
 
 
 def _crude_text(html: str) -> str:

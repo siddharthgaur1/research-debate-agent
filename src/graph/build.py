@@ -19,7 +19,7 @@ branch logs the failure, returns nothing, and the remaining researchers carry on
 
 from __future__ import annotations
 
-from typing import Callable
+from collections.abc import Callable
 
 from langgraph.graph import END, START, StateGraph
 from langgraph.types import Send

@@ -8,8 +8,8 @@ question because a cache is down would be the wrong trade.
 from __future__ import annotations
 
 import uuid
+from collections.abc import Iterator
 from contextlib import contextmanager
-from typing import Iterator
 
 from ..config import get_settings
 from ..persistence import stream

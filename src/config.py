@@ -94,7 +94,7 @@ class Settings(BaseSettings):
     )
 
     @model_validator(mode="after")
-    def _check(self) -> "Settings":
+    def _check(self) -> Settings:
         if not self.openai_api_key.strip():
             raise ValueError("OPENAI_API_KEY is set but empty.")
         key = self.tavily_api_key if self.search_provider == "tavily" else self.serpapi_key
